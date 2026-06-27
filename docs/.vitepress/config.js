@@ -13,20 +13,7 @@ const CATEGORIES = [
   { dir: 'misc',     label: '杂项' },
 ]
 
-// --- Sidebar auto-discovery ---
-
-function readTitle(filePath) {
-  try {
-    const content = fs.readFileSync(filePath, 'utf-8')
-    const match = content.match(/^#\s+(.+)/m)
-    return match ? match[1].trim() : null
-  } catch { return null }
-}
-
-function toTitleCase(str) {
-  return str.replace(/-/g, ' ')
-    .replace(/\b\w/g, c => c.toUpperCase())
-}
+// --- Sidebar auto-discovery (only visible when inside a category) ---
 
 function autoSidebar(dirName, label) {
   const dirPath = path.join(DOCS_DIR, dirName)
@@ -36,7 +23,9 @@ function autoSidebar(dirName, label) {
     .filter(f => f.endsWith('.md') && !f.startsWith('_') && f !== 'index.md')
     .map(f => {
       const name = f.replace(/\.md$/, '')
-      const title = readTitle(path.join(dirPath, f)) || toTitleCase(name)
+      const content = fs.readFileSync(path.join(dirPath, f), 'utf-8')
+      const match = content.match(/^#\s+(.+)/m)
+      const title = match ? match[1].trim() : name.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase())
       return { text: title, link: `/${dirName}/${name}` }
     })
 
@@ -61,14 +50,10 @@ export default {
 
   srcExclude: ['**/drafts/**', '**/_draft*'],
 
-  head: [
-    ['link', { rel: 'icon', href: '/favicon.svg' }],
-  ],
-
   themeConfig: {
+    // Minimal nav: only home
     nav: [
       { text: '首页', link: '/' },
-      ...CATEGORIES.map(c => ({ text: c.label, link: `/${c.dir}/` })),
     ],
 
     sidebar: buildSidebar(),
@@ -80,14 +65,6 @@ export default {
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Lsl1ent' },
     ],
-
-    footer: {
-      message: 'Powered by VitePress',
-    },
-
-    editLink: {
-      pattern: 'https://github.com/Lsl1ent/blog/edit/main/docs/:path',
-    },
 
     lastUpdated: {
       text: '最后更新',

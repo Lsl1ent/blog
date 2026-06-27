@@ -1,286 +1,46 @@
 /* ============================================
-   Custom Theme — Personal Blog
+   Minimal Theme
    ============================================ */
 
-/* ---- Color Scheme ---- */
+/* ---- Color ---- */
 :root {
-  --vp-c-brand-1: #3b82f6;
-  --vp-c-brand-2: #2563eb;
-  --vp-c-brand-3: #1d4ed8;
-  --vp-c-brand-soft: rgba(59, 130, 246, .12);
-
-  --vp-c-bg: #ffffff;
-  --vp-c-bg-alt: #f8fafc;
-  --vp-c-bg-elv: #ffffff;
-  --vp-c-bg-soft: #f8fafc;
-
-  --vp-c-text-1: #1e293b;
-  --vp-c-text-2: #64748b;
-  --vp-c-text-3: #94a3b8;
-
-  --vp-c-divider: #e2e8f0;
+  --vp-c-brand-1: #555;
+  --vp-c-brand-2: #333;
+  --vp-c-brand-3: #111;
+  --vp-c-brand-soft: rgba(0, 0, 0, .05);
 
   --vp-font-family-base: 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB',
     system-ui, -apple-system, sans-serif;
-  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+  --vp-font-family-mono: 'JetBrains Mono', 'Consolas', monospace;
 }
 
 .dark {
-  --vp-c-bg: #0f172a;
-  --vp-c-bg-alt: #1e293b;
-  --vp-c-bg-elv: #1e293b;
-  --vp-c-bg-soft: #1e293b;
-  --vp-c-text-1: #e2e8f0;
-  --vp-c-text-2: #94a3b8;
-  --vp-c-text-3: #64748b;
-  --vp-c-divider: #334155;
+  --vp-c-brand-1: #aaa;
+  --vp-c-brand-2: #ccc;
+  --vp-c-brand-3: #eee;
+  --vp-c-brand-soft: rgba(255, 255, 255, .08);
 }
 
-/* ---- Global ---- */
-* {
-  scroll-behavior: smooth;
+/* ---- Typography ---- */
+.vp-doc h1 { font-size: 26px; font-weight: 600; letter-spacing: -0.02em; }
+.vp-doc h2 { font-size: 20px; font-weight: 600; margin-top: 36px; }
+.vp-doc h3 { font-size: 16px; font-weight: 600; }
+.vp-doc p  { line-height: 1.8; font-size: 15px; }
+
+.vp-doc a {
+  color: var(--vp-c-brand-1);
+  text-underline-offset: 3px;
 }
 
-/* ---- Nav ---- */
-.VPNav {
-  backdrop-filter: blur(12px);
-  background: rgba(255, 255, 255, 0.8);
-  border-bottom: 1px solid var(--vp-c-divider);
+/* ---- Code ---- */
+div[class*='language-'] {
+  border-radius: 6px;
+  margin: 18px 0;
 }
 
-.dark .VPNav {
-  background: rgba(15, 23, 42, 0.8);
-}
-
-.VPNavBarTitle .title {
-  font-size: 18px;
-  font-weight: 700;
-}
+pre { font-size: 14px; }
 
 /* ---- Sidebar ---- */
 .VPSidebar {
   border-right: 1px solid var(--vp-c-divider);
-  background: var(--vp-c-bg-alt);
-}
-
-.VPSidebarItem .item {
-  padding: 7px 14px;
-  border-radius: 8px;
-  margin: 2px 10px;
-  font-size: 14px;
-  transition: all 0.15s;
-}
-
-.VPSidebarItem .item:hover {
-  background: var(--vp-c-brand-soft);
-  color: var(--vp-c-brand-1);
-}
-
-/* ---- Content ---- */
-.vp-doc h1 {
-  font-size: 28px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  margin-bottom: 24px;
-}
-
-.vp-doc h2 {
-  font-size: 22px;
-  font-weight: 600;
-  letter-spacing: -0.01em;
-  margin-top: 40px;
-  margin-bottom: 16px;
-  padding-bottom: 8px;
-  border-bottom: 1px solid var(--vp-c-divider);
-}
-
-.vp-doc h3 {
-  font-size: 18px;
-  font-weight: 600;
-}
-
-.vp-doc p {
-  line-height: 1.8;
-  font-size: 15px;
-}
-
-.vp-doc a {
-  color: var(--vp-c-brand-1);
-  text-decoration: underline;
-  text-underline-offset: 3px;
-}
-
-.vp-doc a:hover {
-  color: var(--vp-c-brand-2);
-}
-
-/* ---- Code blocks ---- */
-div[class*='language-'] {
-  border-radius: 10px;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
-  margin: 20px 0;
-}
-
-.vp-code-group .tabs label {
-  font-size: 13px;
-}
-
-pre {
-  font-size: 14px;
-}
-
-/* ---- Tables ---- */
-.vp-doc table {
-  width: 100%;
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-.vp-doc th {
-  background: var(--vp-c-bg-alt);
-  font-weight: 600;
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-}
-
-/* ---- Blockquote ---- */
-.vp-doc blockquote {
-  border-left: 3px solid var(--vp-c-brand-2);
-  background: var(--vp-c-brand-soft);
-  border-radius: 0 8px 8px 0;
-  padding: 16px 20px;
-  font-style: italic;
-}
-
-/* ---- Home page ---- */
-.VPHome {
-  padding-bottom: 80px;
-}
-
-.VPHomeHero {
-  padding-top: 80px;
-  padding-bottom: 48px;
-}
-
-.VPHomeHero .container {
-  max-width: 680px;
-  text-align: center;
-}
-
-.VPHomeHero .name {
-  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 60%);
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  font-size: 52px;
-  font-weight: 800;
-  line-height: 1.2;
-  letter-spacing: -0.03em;
-}
-
-.VPHomeHero .text {
-  font-size: 24px;
-  color: var(--vp-c-text-2);
-  font-weight: 400;
-  margin-top: 12px;
-}
-
-.VPHomeHero .tagline {
-  font-size: 16px;
-  color: var(--vp-c-text-3);
-  margin-top: 8px;
-}
-
-.VPHomeHero .actions {
-  margin-top: 36px;
-  gap: 12px;
-}
-
-.VPHomeHero .actions .VPButton {
-  border-radius: 50px;
-  padding: 0 28px;
-  height: 44px;
-  font-size: 15px;
-  font-weight: 500;
-}
-
-.VPHomeHero .actions .VPButton.brand {
-  background: linear-gradient(135deg, #3b82f6, #8b5cf6);
-  border: none;
-  color: #fff;
-}
-
-/* ---- Features grid ---- */
-.VPFeatures {
-  padding: 24px 0;
-  max-width: 960px;
-  margin: 0 auto;
-}
-
-.VPFeatures .container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  padding: 0 24px;
-}
-
-.VPFeatures .item {
-  background: var(--vp-c-bg-alt);
-  border: 1px solid var(--vp-c-divider);
-  border-radius: 12px;
-  padding: 28px 24px;
-  transition: all 0.2s;
-  text-decoration: none;
-}
-
-.VPFeatures .item:hover {
-  border-color: var(--vp-c-brand-1);
-  background: var(--vp-c-brand-soft);
-  transform: translateY(-2px);
-}
-
-.VPFeatures .item .title {
-  font-size: 17px;
-  font-weight: 600;
-  color: var(--vp-c-text-1);
-  margin-bottom: 8px;
-}
-
-.VPFeatures .item .details {
-  font-size: 14px;
-  color: var(--vp-c-text-2);
-  line-height: 1.6;
-}
-
-/* ---- Footer ---- */
-.VPFooter {
-  border-top: 1px solid var(--vp-c-divider) !important;
-  padding: 24px;
-}
-
-/* ---- Scrollbar ---- */
-::-webkit-scrollbar {
-  width: 5px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: var(--vp-c-divider);
-  border-radius: 3px;
-}
-
-/* ---- Responsive ---- */
-@media (max-width: 768px) {
-  .VPHomeHero .name {
-    font-size: 36px;
-  }
-  .VPHomeHero .text {
-    font-size: 20px;
-  }
-  .VPFeatures .container {
-    grid-template-columns: 1fr;
-  }
 }
