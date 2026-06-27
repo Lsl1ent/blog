@@ -1,5 +1,5 @@
 /* ============================================
-   Minimal Theme
+   Minimal Theme + Chinese labels
    ============================================ */
 
 /* ---- Color ---- */
@@ -43,4 +43,27 @@ pre { font-size: 14px; }
 /* ---- Sidebar ---- */
 .VPSidebar {
   border-right: 1px solid var(--vp-c-divider);
+}
+
+/* ---- Search: "Search" → "搜索" ---- */
+.DocSearch-Button-Placeholder {
+  font-size: 0 !important;
+}
+.DocSearch-Button-Placeholder::after {
+  content: '搜索';
+  font-size: 13px;
+}
+
+/* Hide K shortcut hint */
+.DocSearch-Button-Keys {
+  display: none;
+}
+
+/* ---- Mobile menu: "Appearance" → "主题" ---- */
+.item.appearance .label {
+  font-size: 0 !important;
+}
+.item.appearance .label::after {
+  content: '主题';
+  font-size: 14px;
 }

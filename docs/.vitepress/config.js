@@ -13,8 +13,6 @@ const CATEGORIES = [
   { dir: 'misc',     label: '杂项' },
 ]
 
-// --- Sidebar auto-discovery (only visible when inside a category) ---
-
 function autoSidebar(dirName, label) {
   const dirPath = path.join(DOCS_DIR, dirName)
   if (!fs.existsSync(dirPath)) return [{ text: label, items: [] }]
@@ -40,54 +38,42 @@ function buildSidebar() {
   return sidebar
 }
 
-// --- Config ---
+const themeConfig = {
+  nav: [
+    { text: '首页', link: '/' },
+  ],
+
+  sidebar: buildSidebar(),
+
+  search: {
+    provider: 'local',
+  },
+
+  socialLinks: [
+    { icon: 'github', link: 'https://github.com/Lsl1ent' },
+  ],
+
+  docFooter: {
+    prev: '上一篇',
+    next: '下一篇',
+  },
+
+  outline: {
+    label: '本页目录',
+  },
+
+  lastUpdated: {
+    text: '最后更新',
+  },
+}
 
 export default {
   title: 'My Notes',
-  description: 'Personal learning notes',
+  description: '个人学习笔记',
   lang: 'zh-CN',
   cleanUrls: true,
 
   srcExclude: ['**/drafts/**', '**/_draft*'],
 
-  themeConfig: {
-    // Minimal nav: only home
-    nav: [
-      { text: '首页', link: '/' },
-    ],
-
-    sidebar: buildSidebar(),
-
-    search: {
-      provider: 'local',
-      options: {
-        translations: {
-          button: { buttonText: '搜索' },
-          modal: { noResultsText: '无结果', resetButtonTitle: '清除', footer: { selectText: '选择', navigateText: '切换' } },
-        },
-      },
-    },
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/Lsl1ent' },
-    ],
-
-    docFooter: {
-      prev: '上一篇',
-      next: '下一篇',
-    },
-
-    outline: {
-      label: '本页目录',
-    },
-
-    lastUpdated: {
-      text: '最后更新',
-    },
-
-    darkModeSwitchLabel: '主题',
-    sidebarMenuLabel: '菜单',
-    returnToTopLabel: '回到顶部',
-    langMenuLabel: '语言',
-  }
+  themeConfig,
 }
