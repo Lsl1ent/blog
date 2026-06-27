@@ -59,15 +59,35 @@ export default {
     sidebar: buildSidebar(),
 
     search: {
-      provider: 'local'
+      provider: 'local',
+      options: {
+        translations: {
+          button: { buttonText: '搜索' },
+          modal: { noResultsText: '无结果', resetButtonTitle: '清除', footer: { selectText: '选择', navigateText: '切换' } },
+        },
+      },
     },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Lsl1ent' },
     ],
 
+    docFooter: {
+      prev: '上一篇',
+      next: '下一篇',
+    },
+
+    outline: {
+      label: '本页目录',
+    },
+
     lastUpdated: {
       text: '最后更新',
     },
+
+    darkModeSwitchLabel: '主题',
+    sidebarMenuLabel: '菜单',
+    returnToTopLabel: '回到顶部',
+    langMenuLabel: '语言',
   }
 }
