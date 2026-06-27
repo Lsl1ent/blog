@@ -15,7 +15,6 @@ const CATEGORIES = [
 
 // --- Sidebar auto-discovery ---
 
-/** Extract the first H1 title from a markdown file */
 function readTitle(filePath) {
   try {
     const content = fs.readFileSync(filePath, 'utf-8')
@@ -24,16 +23,11 @@ function readTitle(filePath) {
   } catch { return null }
 }
 
-/** Convert kebab-case to Title Case */
 function toTitleCase(str) {
   return str.replace(/-/g, ' ')
     .replace(/\b\w/g, c => c.toUpperCase())
 }
 
-/**
- * Auto-generate sidebar items by scanning a directory for .md files.
- * Skips files starting with "_" (internal) and "index.md" (section root).
- */
 function autoSidebar(dirName, label) {
   const dirPath = path.join(DOCS_DIR, dirName)
   if (!fs.existsSync(dirPath)) return [{ text: label, items: [] }]
@@ -65,18 +59,38 @@ export default {
   lang: 'zh-CN',
   cleanUrls: true,
 
-  // Exclude draft articles from production build
   srcExclude: ['**/drafts/**', '**/_draft*'],
+
+  head: [
+    ['link', { rel: 'icon', href: '/favicon.svg' }],
+  ],
 
   themeConfig: {
     nav: [
       { text: '首页', link: '/' },
+      ...CATEGORIES.map(c => ({ text: c.label, link: `/${c.dir}/` })),
     ],
 
     sidebar: buildSidebar(),
 
     search: {
       provider: 'local'
-    }
+    },
+
+    socialLinks: [
+      { icon: 'github', link: 'https://github.com/Lsl1ent' },
+    ],
+
+    footer: {
+      message: 'Powered by VitePress',
+    },
+
+    editLink: {
+      pattern: 'https://github.com/Lsl1ent/blog/edit/main/docs/:path',
+    },
+
+    lastUpdated: {
+      text: '最后更新',
+    },
   }
 }

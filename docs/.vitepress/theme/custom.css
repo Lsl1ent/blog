@@ -1,0 +1,165 @@
+/* ===== Color Scheme ===== */
+:root {
+  --vp-c-brand-1: #3b82f6;
+  --vp-c-brand-2: #2563eb;
+  --vp-c-brand-3: #1d4ed8;
+  --vp-c-brand-soft: rgba(59, 130, 246, .14);
+
+  --vp-c-bg: #ffffff;
+  --vp-c-bg-alt: #f8fafc;
+  --vp-c-bg-elv: #ffffff;
+  --vp-c-bg-soft: #f8fafc;
+
+  --vp-c-text-1: #1e293b;
+  --vp-c-text-2: #475569;
+
+  --vp-font-family-base: 'PingFang SC', 'Microsoft YaHei', 'Hiragino Sans GB', system-ui, -apple-system, sans-serif;
+  --vp-font-family-mono: 'JetBrains Mono', 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+}
+
+.dark {
+  --vp-c-bg: #0f172a;
+  --vp-c-bg-alt: #1e293b;
+  --vp-c-bg-elv: #1e293b;
+  --vp-c-bg-soft: #1e293b;
+  --vp-c-text-1: #e2e8f0;
+  --vp-c-text-2: #94a3b8;
+}
+
+/* ===== Layout ===== */
+.VPDoc {
+  padding-top: 32px;
+}
+
+/* ===== Sidebar ===== */
+.VPSidebar {
+  border-right: 1px solid var(--vp-c-divider);
+}
+
+.VPSidebarItem .item {
+  padding: 6px 12px;
+  border-radius: 6px;
+  margin: 1px 8px;
+  transition: background .15s;
+}
+
+.VPSidebarItem .item:hover {
+  background: var(--vp-c-brand-soft);
+}
+
+/* ===== Home page ===== */
+.VPHome {
+  padding-bottom: 64px;
+}
+
+.VPHomeHero .container {
+  max-width: 720px;
+}
+
+.VPHomeHero .name {
+  background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 48px;
+}
+
+.VPHomeHero .text {
+  font-size: 22px;
+  color: var(--vp-c-text-2);
+}
+
+.VPHomeHero .tagline {
+  font-size: 16px;
+}
+
+/* ===== Features / Cards ===== */
+.home-categories {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  padding: 0 24px;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+.home-category-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  border-radius: 12px;
+  background: var(--vp-c-bg-soft);
+  border: 1px solid var(--vp-c-divider);
+  text-decoration: none;
+  color: var(--vp-c-text-1);
+  font-size: 16px;
+  font-weight: 500;
+  transition: all .2s;
+}
+
+.home-category-card:hover {
+  border-color: var(--vp-c-brand-1);
+  background: var(--vp-c-brand-soft);
+  transform: translateY(-2px);
+}
+
+/* ===== Content ===== */
+.vp-doc h1 {
+  background: linear-gradient(135deg, var(--vp-c-brand-1), #8b5cf6);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.vp-doc a {
+  text-decoration: none;
+  color: var(--vp-c-brand-1);
+}
+
+.vp-doc a:hover {
+  color: var(--vp-c-brand-2);
+}
+
+/* ===== Code blocks ===== */
+.vp-code-group .tabs label {
+  font-size: 13px;
+}
+
+div[class*='language-'] {
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,.06);
+}
+
+/* ===== Nav ===== */
+.VPNav {
+  backdrop-filter: blur(8px);
+  background: rgba(255,255,255,.85);
+}
+
+.dark .VPNav {
+  background: rgba(15,23,42,.85);
+}
+
+/* ===== Footer ===== */
+.VPFooter {
+  border-top: none !important;
+}
+
+/* ===== Scrollbar ===== */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-divider);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-text-2);
+}
